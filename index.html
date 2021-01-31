@@ -78,24 +78,33 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#course-materials" class="nav-link">Course Materials</a>
+            <li class="nav-item" data-level="2"><a href="#course-description" class="nav-link">Course Description</a>
               <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#platforms" class="nav-link">Platforms</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
             <li class="nav-item" data-level="2"><a href="#syllabus" class="nav-link">Syllabus</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#links" class="nav-link">Links</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
+            
             <li class="nav-item" data-level="2"><a href="#software" class="nav-link">Software</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#license" class="nav-link">License</a>
+            
+            <li class="nav-item" data-level="2"><a href="#materials" class="nav-link">Materials</a>
               <ul class="nav flex-column">
               </ul>
             </li>
+            
+            <li class="nav-item" data-level="2"><a href="#license" class="nav-link">License</a>
+              <ul class="nav flex-column">
               </ul>
             </li>
         </ul>
@@ -104,25 +113,42 @@
                     <div class="col-md-9" role="main">
 
 <p><img alt="" src="img/course-logo-full.svg" /></p>
-<h1 id="course-materials">Course Materials</h1>
-<p><br>
-<br></p>
-<h2 id="syllabus">Syllabus</h2>
-<p>The syllabus can be viewed as a <a href="csi702_001_syllabus_sp21.pdf">pdf here</a>.  </p>
-<p><br>
-<br></p>
-<h2 id="links">Links</h2>
+<h2 id="course-description">Course Description</h2>
+<p>This course will teach students programming techniques, tools, and debugging methods for using parallel
+computers to efficiently solve challenging problems in science and engineering. We take an applied
+approach to learning how to optimize programs serially and then by leveraging some of the most
+important parallel programming models today: shared memory (OpenMP), distributed memory (MPI),
+and GPUs (CUDA). By completing a series of mini-projects, students will develop an intuition for
+identifying the patterns that appear in essentially all programs that need to run fast and learn how to
+address them using linear algebra, graph algorithms, structured grids, etc. The course culminates in a
+final project where students code their own parallel program that solves a scientific problem, either from
+scratch or by modifying an existing code base.
+<br>
+ ● Classroom: Online (meeting details will be emailed)
+ ● Meeting times: Wednesdays 7:20pm – 10:00pm</p>
+<p><br></p>
+<h2 id="platforms">Platforms</h2>
 <ul>
-<li><a href="https://sp19-masoncsi702.slack.com/">Slack workspace for CSI 702 (Spring 2019)</a> - The Slack workspace for this course.</li>
+<li><a href="https://sp19-masoncsi702.slack.com/">Slack workspace for CSI 702 (Spring 2021)</a> - The Slack workspace for this course.</li>
 <li><a href="https://moodle.xsede.org">XSEDE Course on Moodle</a> - The platform used to distribute the online components of this course.</li>
 <li><a href="https://portal.xsede.org">XSEDE Portal</a> - Portal for accessing XSEDE resources and useful tutorials.</li>
 <li><a href="https://moodle.xsede.org">XSEDE Course on Moodle</a> - The platform used to distribute the online components of this course.</li>
 <li><a href="https://sites.google.com/lbl.gov/cs267-spr2019/">CS267 — Applications of Parallel Computers (Spring 2019)</a> - Course website for the Spring 2019 semester of UC Berkeley’s Applications of Parallel Computers course. The online XSEDE Moodle course is based on this course.   </li>
 </ul>
 <p><br>
+|---| :--- |
+|Instructor  | Dr. Swabir Silayi     |
+|Office Hours| Online by appointment|
+<br>
+<br></p>
+<h2 id="syllabus">Syllabus</h2>
+<p>The full syllabus can be viewed as a <a href="csi702_001_syllabus_sp21.pdf">pdf here</a>.  </p>
+<p><br>
 <br></p>
 <h2 id="software">Software</h2>
 <p><br></p>
+<p>The course lectures and homework assignments are primarily in C and C++. GPUs will be programmed
+using Nvidia’s CUDA C API and Thrust C++ template library. </p>
 <table>
 <thead>
 <tr>
@@ -164,6 +190,29 @@
 </tr>
 </tbody>
 </table>
+<p><br>
+<br></p>
+<h2 id="materials">Materials</h2>
+<p>The course has no official textbook, but the following resources will be useful to supplement the course:</p>
+<ul>
+<li>
+<p><a href="https://proquest.safaribooksonline.com/book/programming/9780123742605">P. Pacheco, An Introduction to Parallel Programming (Morgan Kaufmann, Amsterdam: Boston, 2011).</a></p>
+</li>
+<li>
+<p>[D. Kirk and W. Hwu, Programming Massively Parallel Processors: A Hands-on Approach, 2nd ed.
+(Morgan Kaufmann, Amsterdam, 2012).] (https://proquest.safaribooksonline.com/9780124159921)</p>
+</li>
+<li>
+<p>[V. Eijkhout, R. van de Geijn, and E. Chow, Introduction to High Performance Scientific Computing
+(Zenodo, 2016)] (https://doi.org/10.5281/zenodo.49897)</p>
+</li>
+<li>
+<p><a href="https://bitbucket.org/VictorEijkhout/textbook-introduction-to-scientific-programming">V. Eijkhout, Introduction to Scientific Programming in C++/Fortran2003 (unpublished)</a></p>
+</li>
+<li>
+<p><a href="https://bitbucket.org/VictorEijkhout/parallel-computing-book">V. Eijkhout, Parallel Programming in MPI and OpenMP (unpublished)</a></p>
+</li>
+</ul>
 <p><br>
 <br></p>
 <h2 id="license">License</h2>
@@ -252,5 +301,5 @@
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-01-31 05:35:09.851342+00:00
+Build Date UTC : 2021-01-31 05:52:54.741811+00:00
 -->

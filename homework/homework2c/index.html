@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Homework2c - CSI 702 Sp'21</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">CSI 702 Sp'21</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../schedule/" class="nav-link">Course Schedule</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../assignments/" class="nav-link">Assignments</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#homework-2-parallelizing-a-particle-simulation" class="nav-link">Homework 2 — Parallelizing a Particle Simulation</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#important-notice" class="nav-link">Important Notice</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#problem-statement" class="nav-link">Problem statement</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#correctness-and-performance" class="nav-link">Correctness and Performance</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#grading" class="nav-link">Grading</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#report" class="nav-link">Report</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#how-to-submit" class="nav-link">How to submit</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#source-code" class="nav-link">Source code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#logging-in-to-bridges" class="nav-link">Logging in to Bridges</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#compiling-the-code" class="nav-link">Compiling the code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#submitting-and-running-the-code" class="nav-link">Submitting and running the code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#cli-interface" class="nav-link">CLI interface</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#file-transfer" class="nav-link">File transfer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#optional-other-improvements" class="nav-link">Optional: Other improvements</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="homework-2-parallelizing-a-particle-simulation">Homework 2 — Parallelizing a Particle Simulation</h1>
+<p>Due: April 28, 2019 @ 11:59pm</p>
+<p><strong>Part C: GPU</strong></p>
+<p><a href="https://classroom.github.com/g/tsphKpRs">GitHub classroom repository: click here to get your team’s starter files</a></p>
+<h2 id="important-notice">Important Notice</h2>
+<p><strong>Unlike the other homework assignments, you might not be able to run this on
+your laptop or personal computer.</strong> You <strong>MUST</strong> have a NVIDIA GPU, and it must
+be on this <a href="https://developer.nvidia.com/cuda-gpus">Supported GPUs list</a>. If it’s on the list, then you
+will also need to install the <a href="https://developer.nvidia.com/cuda-toolkit">CUDA Toolkit</a>. If you already have
+the CUDA Toolkit installed, then verify that it’s version 7 or higher.</p>
+<p><strong>In addition, the settings in the SLURM submission scripts and the way you
+launch interactive mode on Bridges is different from the other homeworks.</strong>
+Please review the <a href="#submitting-and-running-the-code">Submitting and running the code</a>
+section of this file before attempting to run an interactive GPU session.</p>
+<h2 id="problem-statement">Problem statement</h2>
+<p>Your goal is to parallelize on XSEDE’s
+<a href="https://portal.xsede.org/psc-bridges">Bridges</a> supercomputer a toy particle
+simulator (similar particle simulators are used in
+<a href="http://www.thp.uni-duisburg.de/~kai/index_1.html">mechanics</a>,
+<a href="http://www.ks.uiuc.edu/Research/namd/">biology</a>,
+<a href="http://www.mpa-garching.mpg.de/gadget/clusters/index.html">astronomy</a>, etc.)
+that reproduces the behaviour shown in the following animation:</p>
+<p><img alt="Animation of particle simulation" src="/img/animation.gif" /></p>
+<p>The range of interaction forces <em>(cutoff)</em> is limited as shown in grey for a
+selected particle. Density is set sufficiently low so that given <em>n</em> particles,
+only <em>O(n)</em> interactions are expected.</p>
+<p>Suppose we have a code that runs in time <em>T = O(n)</em> on a single processor. Then
+we’d hope to run in time <em>T/p</em> when using <em>p</em> processors. We’d like you to write
+parallel codes that approach these expectations.</p>
+<p>You will be executing your code on a <a href="https://www.nvidia.com/en-us/data-center/tesla-k80/">NVIDIA Tesla K80 GPU</a>, which
+has a <a href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capabilities">compute capability of 3.7</a>.</p>
+<h2 id="correctness-and-performance">Correctness and Performance</h2>
+<p>A simple correctness check which computes the minimal distance between 2
+particles during the entire simulation is provided. A correct simulation will
+have particles stay at greater than <em>0.4</em> (of cutoff) with typical values
+between <em>0.7-0.8</em>. A simulation were particles don’t interact correctly will be
+less than <em>0.4</em> (of cutoff) with typical values between <em>0.01-0.05</em> .</p>
+<p>Adding the checks inside the GPU code provides too much of an overhead so an
+<code>autocorrect</code> executable is provided that checks the output txt file for the
+values mentioned above.</p>
+<h3 id="important-note-for-performance">Important note for Performance:</h3>
+<p>While the job-bridges-* scripts we are providing have small numbers of
+particles (4000) to allow for the <em>O(n<sup>2</sup>)</em> algorithm to finish
+execution, the final code will be tested with values in the range of
+<code>auto-bridges-gpu</code>.</p>
+<h2 id="grading">Grading</h2>
+<p>25% of your grade will be based on your code’s efficiency, and 75% of your grade
+will depend on your report.</p>
+<p><strong>GPU Scaling</strong> will be tested via fitting multiple runs of the code to a line
+on a log/log plot and calculating the slope of that line. This will determine
+whether your code is attaining the <em>O(n)</em> desired complexity versus the starting
+<em>O(n<sup>2</sup>)</em>. With an achieved result of <em>O(n<sup>x</sup>)</em> you will
+receive:</p>
+<ul>
+<li>
+<p>If x is between 1.4 and 1.2 you will receive a scaling score between 0 and
+    40 proportional to x. (Ex: 1.3 gives a score of 20.0)</p>
+</li>
+<li>
+<p>If x is below 1.2 you will receive a scaling score of 40.</p>
+</li>
+</ul>
+<p><strong>GPU speedup</strong> will be tested by comparing the runs with serial <em>O(n)</em> code and
+finding the average over a range of particle sizes. Depending on the average
+speedup the score will be:</p>
+<ul>
+<li>
+<p>If the speedup is between 2 and 4 you will receive a score between 0 and 40
+    proportional to it (Ex: 3 gives a score of 20)</p>
+</li>
+<li>
+<p>If the speedup is between 4 and 8 you will receive a score between 40 and 60
+    proportional to it (Ex: 7 gives a score of 55)</p>
+</li>
+<li>
+<p>If the speedup is above 8 you will receive a score of 60</p>
+</li>
+<li>
+<p>If the scaling score for the GPU is 0 (aka still have <em>O(n<sup>2</sup>)</em>
+    code ) the score for the speedup will be set to 0.</p>
+</li>
+</ul>
+<p>The total code grade is the sum of the GPU scaling and speedup scores.</p>
+<h2 id="report">Report</h2>
+<p>This homework will be completed in groups, and each group must submit a single
+joint report.</p>
+<p>The report is to be written in a style appropriate for an academic journal with
+any relevant citations provided in a bibliography. The report should only
+discuss the details of the final version of your submitted code. The report is
+to contain the following:</p>
+<ol>
+<li>
+<p>A section detailing how you optimized the code. This requires both a
+    conceptual discussion, for example how you partitioned the space in the problem
+    (figures are helpful!), and a code summary, where you explain each important
+    step in your solution (this should be supported with code snippets).</p>
+</li>
+<li>
+<p>A benchmark section where you show how your code performs against the naive
+    implementation, and how it scales with respect to the appropriate parameters.
+    Figures are helpful when reporting this data! Benchmark data should be taken
+    from runs performed on Bridges, not your local computer or laptop. Make sure you
+    discuss the reason for any odd behavior in the reported performance.</p>
+</li>
+</ol>
+<p><strong>As you can see, no introductory section is needed for this report as the
+simulation and general problem is the same as in Part A and Part B.</strong> Your
+report should be converted to the PDF format prior to submission. The filename
+should follow this format: <code>Team#_hw2c.pdf</code>.</p>
+<h2 id="how-to-submit">How to submit</h2>
+<p>Put your report file <code>Team#_hw2c.pdf</code> into the <code>doc/</code> directory in your GitHub
+repository, and save, commit, and push the report and the final version of your
+code into the master branch. Do not push the <code>particles</code> binary or any temporary
+files (such as <code>.o</code> files) to GitHub (the <code>.gitignore</code> file is meant to help
+prevent this). After everything is pushed and up-to-date, do the following:</p>
+<ol>
+<li>
+<p>Have <strong>one</strong> group member upload the report PDF to the Homework 2c
+    assignment posted on Blackboard.</p>
+</li>
+<li>
+<p>Have <strong>each</strong> group member navigate to the group’s repository on the GitHub
+    website, click the green <code>Clone or download</code> button, and click <strong>Download
+    ZIP</strong>. Rename the zipfile to <code>Team#_hw2c.zip</code> (replace <code>#</code> with your team’s
+    number) and upload it to the <a href="https://moodle.xsede.org">Moodle</a> site.</p>
+</li>
+</ol>
+<h2 id="source-code">Source code</h2>
+<p>You will start with an OpenMP and MPI implementation that is unacceptably
+inefficient. <strong>You are also provided with an efficient solution for the serial
+implementation.</strong> <strong>You are highly encouraged to port this over to your OpenMP
+and MPI implementations.</strong></p>
+<ul>
+<li>
+<p><strong>src/cli.cu</strong> (DO NOT EDIT) and <strong>vendor/CLI/CLI11.hpp</strong> (DO NOT EDIT)</p>
+<ul>
+<li>Unified interface for defining and controlling command-line options</li>
+</ul>
+</li>
+<li>
+<p><strong>src/serial.cu</strong> and <strong>src/serial.cuh</strong></p>
+<ul>
+<li>an efficient serial implementation with <em>O(n)</em> scaling.</li>
+</ul>
+</li>
+<li>
+<p><strong>src/common.cu</strong> and <strong>src/common.cuh</strong></p>
+<ul>
+<li>an implementation of common functionality, such as I/O, numerics and timing</li>
+</ul>
+</li>
+<li>
+<p><strong>src/gpu.cu</strong> and <strong>src/gpu.cuh</strong></p>
+<p>a serial CUDA implementation, similar to the OpenMP and MPI codes you
+started from.</p>
+</li>
+<li>
+<p><strong>src/gpu_kernels.cu</strong> and <strong>src/gpu_kernels.cuh</strong></p>
+<p>The CUDA kernels (functions) used in <code>gpu.cu</code>.</p>
+</li>
+<li>
+<p><strong>src/clion.cuh</strong></p>
+<p>CLion doesn’t natively support CUDA syntax, so this header file helps fix
+that. This header file is ignored during compilation, so it has no effect on
+performance.</p>
+</li>
+<li>
+<p><strong>src/autocorrect</strong></p>
+<p>A pre-built binary for checking the correctness of a program by verifying
+the txt output file. This program will run at a serial <em>O(n)</em> speed and will
+give the results for the minimum and maximum distance between particles
+during the run. This program can be run on any txt output file from a
+simulation with small sized tests (<em>n \&lt; 10000</em>).</p>
+</li>
+<li>
+<p><strong>CMakeLists.txt</strong> (DO NOT EDIT) and <strong>src/CMakeLists.txt</strong></p>
+<ul>
+<li>cmake configuration files for compiling your code. Compiler flags and
+    the full list of source files to compile can be edited in
+    <strong>src/CMakeLists.txt</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>job-bridges-gpu</strong></p>
+<ul>
+<li>sample batch file to launch job on Bridges. Use <em>sbatch</em> to submit on
+    Bridges. This file runs the <code>src/autocorrect</code> test to check for
+    correctness.</li>
+</ul>
+</li>
+<li>
+<p><strong>auto-bridges-serial</strong></p>
+<ul>
+<li>sample batch file to launch autograder jobs on Bridges. Use <em>sbatch</em> to
+    submit on Bridges. Use this file to check performance.</li>
+</ul>
+</li>
+<li>
+<p><strong>scripts/hw2-visualize/animate.py</strong></p>
+<ul>
+<li>A Python script for animating the particle trajectories generated by the
+    simulation. Requires a recent version of Anaconda to be installed.
+    Imagemagick must also be installed to generate animated gif files.
+    <code>ffmpeg</code> must also be installed to render mp4 movie files. Look in
+    <strong>job-bridges-serial</strong> for an example on how to generate the animations.</li>
+</ul>
+</li>
+<li>
+<p><strong>scripts/hw2-autograder/hw2c_autograder.py</strong></p>
+<ul>
+<li>A Python script for grading your code. Requires a recent version of
+    Anaconda to be installed. Look in <strong>auto-bridges-openmp16</strong> and
+    <strong>auto-bridges-gpu</strong> for an example on how to run the autograder.</li>
+</ul>
+</li>
+<li>
+<p><strong>scripts/get-cuda-sm/get_cuda_sm.sh</strong></p>
+<ul>
+<li>A small script that, if it runs successfully on your setup, will print
+    out the compute capability of your GPU.</li>
+</ul>
+</li>
+</ul>
+<h2 id="logging-in-to-bridges">Logging in to Bridges</h2>
+<p>The easiest way to access the machines is to login directly with your own ssh
+client to <strong>login.xsede.org</strong> and from there <strong>gsissh</strong> into the correct
+machine. You need to set up two-factor authentication with Duo in order to use
+the single sign-on hub. More information on is available here on the <a href="https://portal.xsede.org/web/xup/single-sign-on-hub">single
+login system</a>.</p>
+<p>An example of logging on to XSEDE would be to first connect to the single
+sign-on hub:</p>
+<pre><code>ssh XSEDE-username@login.xsede.org
+</code></pre>
+<p>Enter your password and complete the 2-factor authentication request. Then, run
+the following to hop over to Bridges:</p>
+<pre><code>gsissh bridges
+</code></pre>
+<p>Another way to login to XSEDE resources is via the <a href="https://portal.xsede.org/group/xup/accounts">Accounts
+tab</a> in XSEDE User Portal. To reach this page login to XSEDE
+User Portal, navigate to MY XSEDE tab and from there select the Accounts page.
+All machines you have access to will have a <strong>login</strong> option next to them that
+will launch OpenSSH via a Java Applet.</p>
+<p>Please be aware that most XSEDE resources are not available via direct ssh and
+all requests must go through the XSEDE single login system.</p>
+<p>To clone the files from your Github copy, use the following command:</p>
+<pre><code>git clone git@github.com:mason-sp19-csi-702-003/homework-2c-YOURTEAMNAME.git
+</code></pre>
+<h2 id="compiling-the-code">Compiling the code</h2>
+<p>Instead of a regular Makefile, compilation is handled via CMake. For your
+convenience, a simple script file named <code>make.sh</code> is included that will
+automatically compile your code on Bridges. From the root directory of this
+repository, simply run:</p>
+<pre><code>./make.sh
+</code></pre>
+<p>Your code should compile, and the compiled binary will be placed into a folder
+called <code>bin/</code>. Running this after you make a change to the code will recompile
+the changed file and update the binary.</p>
+<p>If you are developing on your local computer, you can compile the code by
+running:</p>
+<pre><code>./make.sh nomodule
+</code></pre>
+<p>The virtual machine is not configured for this assignment even if you have a
+CUDA-enabled GPU (I am not sure it’s even possible for CUDA code to run in a
+VirtualBox environment), so you’ll need to have all the relevant libraries
+installed and run CMake manually. If you are unfamiliar with how to use CMake,
+you can open <code>make.sh</code> with your text editor to get an idea of how to use it.</p>
+<h2 id="submitting-and-running-the-code">Submitting and running the code</h2>
+<p>The jobs queue on Bridges is managed via the <a href="https://slurm.schedmd.com/documentation.html">SLURM scheduler</a>.
+To submit a job, use the <code>sbatch</code> command like so:</p>
+<pre><code>sbatch job-bridges-gpu
+</code></pre>
+<p>To check the status of your running jobs you can use the following command:</p>
+<pre><code>squeue -u $USER
+</code></pre>
+<p>Append a <code>-l</code> flag will print additional information about the running jobs. If
+you want even more information, consider using the <code>sacct</code> command, for example:</p>
+<pre><code>sacct -j $JOBID --format JobID,ReqMem,MaxRSS,TotalCPU,State
+</code></pre>
+<p>where <code>$JOBID</code> is the ID number of the job.</p>
+<p>If you want to cancel a job, run:</p>
+<pre><code>scancel $JOBID
+</code></pre>
+<p>If you would like to receive emails for job submissions add the following lines
+to the submission scripts. This sometimes helps tracking down issues.</p>
+<pre><code>#SBATCH --mail-type=ALL
+#SBATCH --mail-user=youremailaddress
+</code></pre>
+<p>For more details on SLURM commands please see <a href="https://portal.xsede.org/psc-bridges#jobs">Bridges documentation
+page</a>.</p>
+<p>Finally, there is an interactive mode that allows you to request computing
+nodes, but maintain a command line. This is ideal for prototyping and debugging
+purposes. To activate this mode, type</p>
+<pre><code>interact -p GPU-shared -N 1 --gres=gpu:k80:1 --ntasks-per-node=1
+</code></pre>
+<p>The <code>interact.sh</code> script included in the repository provides you with a reminder
+on how to activate the interactive session. For additional information, <a href="https://portal.xsede.org/psc-bridges#jobs:interactive">read
+the documentation on interactive sessions</a>.</p>
+<h2 id="cli-interface">CLI interface</h2>
+<p>When testing the code on a local computer or within an interactive session on
+Bridges, you will use a simple command-line interface to launch the simulation.
+For Part C, there are two runtime modes: “serial” and “gpu”. The “serial” mode
+is the default.</p>
+<p>Running <code>./bin/particles -h</code> will bring up the help:</p>
+<pre><code>Usage: ./bin/particles [OPTIONS] [mode]
+
+Positionals:
+  mode TEXT in {gpu,serial}
+
+Particle simulation run modes
+  serial:   (default) Serial version of simulation.
+  gpu:      GPU/CUDA version of simulation.
+
+Options:
+  -h,--help                   Print this help message and exit
+  -n INT=1000                 Set the number of particles
+  -o,--output TEXT            Specify the output file name
+  -s,--summary TEXT           Specify the summary file name
+</code></pre>
+<p>The most important options are <code>-n</code>, <code>-o</code>, and <code>-s</code>. The <code>-n</code> option lets you
+control the number of particles in the simulation. The <code>-o</code> option lets you
+output a history of the particle positions to a file, which can be used to
+generate an animated gif or mp4 file. The <code>-s</code> option lets you save the amount
+of time it takes to run a simulation for a given number of particles to a file.
+If the file exists, then new benchmark results are appended to the end of the
+file. The summary file will be used to compute your code grade.</p>
+<p>For example, to run a particle simulation with 2000 particles that outputs the
+benchmark summary data to a file named <code>serial_summary.txt</code>, you would run:</p>
+<pre><code>./bin/particles -n 2000 -s serial_summary.txt
+</code></pre>
+<p>To run the same benchmark on the GPU, you would run:</p>
+<pre><code>./bin/particles -n 2000 -s gpu_summary.txt gpu
+</code></pre>
+<h2 id="file-transfer">File transfer</h2>
+<p>When copying files to and from Bridges, <a href="https://portal.xsede.org/psc-bridges#transfer:tfa">you can use <code>scp</code> in conjunction with
+<code>data.bridges.psc.edu</code></a> to avoid having to copy your files to
+Single Site Login node first. <strong>This will work with the Two-Factor
+Authentication setup.</strong> Try running the following to copy files directly to
+Bridges:</p>
+<pre><code>scp -P 2222 myfile XSEDE-username@data.bridges.psc.edu:/path/to/file
+</code></pre>
+<p>To copy from Bridges:</p>
+<pre><code>scp -P 2222 XSEDE-username@data.bridges.psc.edu:/path/to/file myfile
+</code></pre>
+<h2 id="optional-other-improvements">Optional: Other improvements</h2>
+<p>As always start on these only if you are happy with your current implementation
+for the GPU code.</p>
+<ul>
+<li>Creating a Hybrid that uses CUDA per node and MPI between nodes</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

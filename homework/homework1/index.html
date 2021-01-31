@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Homework1 - CSI 702 Sp'21</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">CSI 702 Sp'21</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../schedule/" class="nav-link">Course Schedule</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../assignments/" class="nav-link">Assignments</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#homework-1-optimize-matrix-multiplication" class="nav-link">Homework 1 — Optimize Matrix Multiplication</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#problem-statement" class="nav-link">Problem statement</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#optimizing" class="nav-link">Optimizing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#report" class="nav-link">Report</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#how-to-submit" class="nav-link">How to submit</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#logging-in-to-bridges" class="nav-link">Logging in to Bridges</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#compiling-the-code" class="nav-link">Compiling the code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#submitting-and-running-the-code" class="nav-link">Submitting and running the code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#cli-interface" class="nav-link">CLI interface</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#file-transfer" class="nav-link">File transfer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#hints" class="nav-link">Hints</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#grading" class="nav-link">Grading</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#optional" class="nav-link">Optional</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#documentation" class="nav-link">Documentation:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="homework-1-optimize-matrix-multiplication">Homework 1 — Optimize Matrix Multiplication</h1>
+<p>Due: February 23, 2019 @ 11:59pm</p>
+<p><a href="https://classroom.github.com/a/MlPbfw3T">GitHub classroom repository: click here to get your starter files</a></p>
+<table>
+
+<tr>
+
+<td>
+
+The code in this repository is a C++11 refactoring of the code distributed on the Moodle site.
+If you have only worked with C before, you will find that the most notable change is the lack of `malloc()` and `free()` functions; instead we use the C++11 STL object `std::vector<double>` to allocate and manage memory for the matrices.
+`std::vector` implements a kind of “garbage collection” and frees its memory once it goes out of scope.
+
+</td>
+
+</tr>
+
+</table>
+
+<h2 id="problem-statement">Problem statement</h2>
+<p>Your task in this assignment is to write an optimized <a href="http://en.wikipedia.org/wiki/Matrix_multiplication">matrix multiplication</a> function for XSEDE’s <a href="https://portal.xsede.org/psc-bridges">Bridges</a> supercomputer.
+We will give you a generic matrix multiplication code (also called matmul or dgemm), and it will be your job to tune our code to run efficiently on Bridge’s processors.
+We are asking you to write an optimized single-threaded matrix multiply kernel.
+This will run on only one core.</p>
+<p>We consider a special case of matmul:</p>
+<pre><code>C := C + A * B
+</code></pre>
+<p>where <code>A</code>, <code>B</code>, and <code>C</code> are <em>n</em> ⨉ <em>n</em> matrices.
+This can be performed using 2<em>n</em><sup>3</sup> floating point operations (<em>n</em><sup>3</sup> adds, <em>n</em><sup>3</sup> multiplies), as in the following pseudocode:</p>
+<pre><code>for i = 1 to n
+  for j = 1 to n
+    for k = 1 to n
+      C(i,j) = C(i,j) + A(i,k) * B(k,j)
+    end
+  end
+end
+</code></pre>
+<p>Other things to keep in mind are:</p>
+<ul>
+<li>
+<p>The target processor on the Bridges compute nodes is a Xeon Intel 14-Core 64-bit E5-processor running at 2.3GHz and supporting 8 floating-point operations per clock period with a peak performance of 42.9 GFLOPS/core.</p>
+</li>
+<li>
+<p>Besides compiler intrinsic functions and built-ins, your code (<code>dgemm-blocked.cpp</code>) must only call into the C/C++ standard library.</p>
+</li>
+<li>
+<p>Your code must use <a href="http://en.wikipedia.org/wiki/Double-precision_floating-point_format">double-precision</a> to represent real numbers.
+    A common reference implementation for</p>
+</li>
+<li>
+<p>Your code should be based on the 2<em>n</em><sup>3</sup> algorithm.
+    Submissions that implement algorithms outside this restriction, such as the <a href="http://en.wikipedia.org/wiki/Strassen_algorithm">Strassen</a> algorithm, will not be graded.</p>
+</li>
+<li>
+<p>You may not use compiler flags that automatically detect <code>dgemm</code> kernels and replace them with BLAS calls, i.e. Intel’s <a href="http://software.intel.com/sites/products/documentation/hpc/composerxe/en-us/2011Update/fortran/win/copts/common_options/option_opt_matmul.htm"><code>-matmul</code></a> flag.</p>
+</li>
+<li>
+<p>The matrices are all stored in <a href="https://en.wikipedia.org/wiki/Row-_and_column-major_order">column-major order</a>, i.e. C<sub>i,j</sub> <code>== C(i,j) == C[(i - 1) + (j - 1) * n]</code>, for <code>i = 1:n</code>, where <code>n</code> is the number of rows in <code>C</code>.
+    Note that we use 1-based indexing when using mathematical symbols C<sub>i,j</sub> and MATLAB index notation <code>C(i,j)</code>, and 0-based indexing when using C index notation <code>C[(i - 1) + (j - 1) * n]</code>.</p>
+</li>
+<li>
+<p>We will check correctness by the following componentwise error bound,</p>
+<pre><code>｜square_dgemm(n, A, B, 0) - A * B｜ &lt;  ε * n * ｜A｜ * ｜B｜
+</code></pre>
+<p>where ε = 2<sup>-52</sup> = 2.2 ⨉ 10<sup>-16</sup> is the <a href="http://en.wikipedia.org/wiki/Machine_epsilon">machine epsilon</a>.</p>
+</li>
+</ul>
+<h2 id="optimizing">Optimizing</h2>
+<p>Now, it’s time to optimize!
+A few optimizations you might consider adding:</p>
+<ol>
+<li>
+<p>Perform blocking. The dgemm-blocked.cpp already gets you started with this, although you’ll need to tune block sizes.</p>
+</li>
+<li>
+<p>Write a register-blocked kernel, either by writing an inner-level fixed-size matrix multiply and hoping (and maybe checking) that the compiler inlines it, writing AVX intrinsics, or even writing inline assembly instructions.</p>
+</li>
+<li>
+<p>Add manual prefetching.</p>
+</li>
+</ol>
+<p>You may, of course, proceed however you wish.
+We recommend you look through the lecture notes as reference material to guide your optimization process, as well as the references at the bottom of this write-up.</p>
+<h2 id="report">Report</h2>
+<p>In addition to your code, you are to submit an accompanying report for the homework assignment.
+The report is to be written in a style appropriate for an academic journal with any relevant citations provided in a bibliography.
+The report should only discuss the details of the final version of your submitted code.
+The report is to contain the following:</p>
+<ol>
+<li>
+<p>An introduction to the problem</p>
+</li>
+<li>
+<p>A section detailing how you optimized the code.
+    This requires both a conceptual discussion of what you implemented (figures are helpful!), and a code summary, where you explain each important step in your solution (this should be supported with code snippets).</p>
+</li>
+<li>
+<p>A benchmark section where you show how your code performs relative to the naive and blas implementations.
+    Figures are very helpful when reporting this data!
+    Benchmark data should be taken from runs performed on Bridges, not your local computer or laptop.
+    Make sure you discuss the reason for any odd behavior (e.g., dips) in the reported performance.</p>
+</li>
+</ol>
+<p>Your report should be converted to the PDF format prior to submission.
+The filename should follow this format: <code>FirstNameLastName_hw1.pdf</code>.</p>
+<h2 id="how-to-submit">How to submit</h2>
+<p>Put your report file <code>FirstNameLastName_hw1.pdf</code> into the <code>doc/</code> directory in your GitHub repository, and save, commit, and push the report and the final version of your code into the master branch.
+Do not push the <code>benchmark</code> binary or any temporary files (such as <code>.o</code> files) to GitHub (the <code>.gitignore</code> file is meant to help prevent this).
+After everything is pushed and up-to-date, do the following:</p>
+<ol>
+<li>
+<p>Upload your report PDF to the Homework 1 assignment posted on Blackboard.</p>
+</li>
+<li>
+<p>Navigate to your repository on the GitHub website, click the green <code>Clone or download</code> button, and click <strong>Download ZIP</strong>.
+    Rename the zipfile to <code>FirstNameLastName_hw1.zip</code> (replace <code>FirstNameLastName</code> with your first and last name) and upload it to the <a href="https://moodle.xsede.org">Moodle</a> site.</p>
+</li>
+</ol>
+<h2 id="logging-in-to-bridges">Logging in to Bridges</h2>
+<p>The easiest way to access the machines is to login directly with your own ssh client to <strong>login.xsede.org</strong> and from there <strong>gsissh</strong> into the correct machine.
+You need to set up two-factor authentication with Duo in order to use the single sign-on hub.
+More information on is available here on the <a href="https://portal.xsede.org/web/xup/single-sign-on-hub">single login system</a>.</p>
+<p>An example of logging on to XSEDE would be to first connect to the single sign-on hub:</p>
+<pre><code>ssh XSEDE-username@login.xsede.org
+</code></pre>
+<p>Enter your password and complete the 2-factor authentication request.
+Then, run the following to hop over to Bridges:</p>
+<pre><code>gsissh bridges
+</code></pre>
+<p>Another way to login to XSEDE resources is via the <a href="https://portal.xsede.org/group/xup/accounts">Accounts tab</a> in XSEDE User Portal.
+To reach this page login to XSEDE User Portal, navigate to MY XSEDE tab and from there select the Accounts page.
+All machines you have access to will have a <strong>login</strong> option next to them that will launch OpenSSH via a Java Applet.</p>
+<p>Please be aware that most XSEDE resources are not available via direct ssh and all requests must go through the XSEDE single login system.</p>
+<p>To clone the files from your Github copy, use the following command:</p>
+<pre><code>git clone git@github.com:mason-sp19-csi-702-003/homework-1-YOURUSERNAME.git
+</code></pre>
+<h2 id="compiling-the-code">Compiling the code</h2>
+<p>Instead of a regular Makefile, compilation is handled via CMake.
+For your convenience, a simple script file named <code>make.sh</code> is included that will automatically compile your code on Bridges.
+From the root directory of this repository, simply run:</p>
+<pre><code>./make.sh
+</code></pre>
+<p>Your code should compile, and the compiled binary will be placed into a folder called <code>bin/</code>.
+Running this after you make a change to the code will recompile the changed file and update the binary.</p>
+<p>If you are developing on your local computer using the virtual machine, you can compile the code by running:</p>
+<pre><code>./make.sh vm
+</code></pre>
+<p>If you aren’t using the virtual machine, then the wrapper script might not work and you’ll need to run CMake manually.
+If you are unfamiliar with how to use CMake, you can open <code>make.sh</code> with your text editor to get an idea of how to use it.</p>
+<h2 id="submitting-and-running-the-code">Submitting and running the code</h2>
+<p>The jobs queue on Bridges is managed via the <a href="https://slurm.schedmd.com/documentation.html">SLURM scheduler</a>.
+To submit a job, use the <code>sbatch</code> command like so:</p>
+<pre><code>sbatch job-blocked
+</code></pre>
+<p>To check the status of your running jobs you can use the following command:</p>
+<pre><code>squeue -u $USER
+</code></pre>
+<p>Append a <code>-l</code> flag will print additional information about the running jobs.
+If you want even more information, consider using the <code>sacct</code> command, for example:</p>
+<pre><code>sacct -j $JOBID --format JobID,ReqMem,MaxRSS,TotalCPU,State
+</code></pre>
+<p>where <code>$JOBID</code> is the ID number of the job.</p>
+<p>If you want to cancel a job, run:</p>
+<pre><code>scancel $JOBID
+</code></pre>
+<p>If you would like to receive emails for job submissions add the following lines to the submission scripts.
+This sometimes helps tracking down issues.</p>
+<pre><code>#SBATCH --mail-type=ALL
+#SBATCH --mail-user=youremailaddress
+</code></pre>
+<p>For more details on SLURM commands please see <a href="https://portal.xsede.org/psc-bridges#jobs">Bridges documentation page</a>.</p>
+<p>Finally, there is an interactive mode that allows you to request computing nodes, but maintain a command line.
+This is ideal for prototyping and debugging purposes.
+To activate this mode, type</p>
+<pre><code>interact -N 1
+</code></pre>
+<p>The <code>interact.sh</code> script included in the repository provides you with a reminder on how to activate the interactive session.
+For additional information, <a href="https://portal.xsede.org/psc-bridges#jobs:interactive">read the documentation on interactive sessions</a>.</p>
+<h2 id="cli-interface">CLI interface</h2>
+<p>When testing the code on a local computer or within an interactive session on Bridges, you will use a simple command-line interface to select which benchmark you want to run.
+There are three available benchmark modes: “naive”, “blocked”, and “blas”.
+The “blocked” mode is the default.</p>
+<p>To benchmark the “naive” mode, you would type:</p>
+<pre><code>./benchmark naive
+</code></pre>
+<p>To benchmark the “blas” mode, you would type:</p>
+<pre><code>./benchmark blas
+</code></pre>
+<p>The benchmark results will both print to stdout and be written to a CSV file named <code>benchmark_MODE.csv</code> by default (replace <code>MODE</code> with the benchmarking mode).
+If you want to change the name of the output file, use the <code>-o</code> flag, for example:</p>
+<pre><code>benchmark -o benchmark1.csv blocked
+</code></pre>
+<p>To read about other features you can set on the command line, such as changing the “max speed” variable (for example, if you want to benchmark on your own computer), run:</p>
+<pre><code>./benchmark --help
+</code></pre>
+<h2 id="file-transfer">File transfer</h2>
+<p>When copying files to and from Bridges, <a href="https://portal.xsede.org/psc-bridges#transfer:tfa">you can use <code>scp</code> in conjunction with <code>data.bridges.psc.edu</code></a> to avoid having to copy your files to Single Site Login node first.
+<strong>This will work with the Two-Factor Authentication setup.</strong>
+Try running the following to copy files directly to Bridges:</p>
+<pre><code>scp -P 2222 myfile XSEDE-username@data.bridges.psc.edu:/path/to/file
+</code></pre>
+<p>To copy from Bridges:</p>
+<pre><code>scp -P 2222 XSEDE-username@data.bridges.psc.edu:/path/to/file myfile
+</code></pre>
+<h2 id="hints">Hints</h2>
+<ul>
+<li>
+<p>Please carefully read this section for implementation details and hints.
+    Stay tuned to <a href="https://moodle.xsede.org/mod/forum/view.php?id=35">Moodle</a> for updates and clarifications, as well as discussion.
+    If you are new to optimizing numerical codes, we recommend reading the papers in the <a href="#references">references</a> section.</p>
+</li>
+<li>
+<p>The GNU and Intel compilers can let you take advantage of Bridges’ Intel(R) Xeon(R) CPU E5-2695 v3 @ 2.30GHz processors’ <a href="https://software.intel.com/en-us/node/523351">support for AVX2, AVX, SSE4.2, SSE4.1, SSSE3, SSE2, and SSE</a> intrinsic instructions.
+    <a href="https://software.intel.com/en-us/articles/performance-tools-for-software-developers-intel-compiler-options-for-sse-generation-and-processor-specific-optimizations">Click here for a broad overview of what these various definitions mean</a>.</p>
+</li>
+<li>
+<p>To get good performance, you will need to manually vectorize your code using compiler intrinsics.
+    <a href="https://software.intel.com/sites/landingpage/IntrinsicsGuide/">Intel provides a convenient applet containing an interactive, searchable list of all of the available intrinsics functions.</a></p>
+</li>
+<li>
+<p>One possible optimization to consider for the multiple tuning parameters in an optimized Matrix Multiplication code is autotuning in order to find the optimal/best available value.
+    Libraries like <a href="http://bebop.cs.berkeley.edu/oski/">OSKI</a> and <a href="http://math-atlas.sourceforge.net/">ATLAS</a> have shown that achieving the best performance sometimes can be done most efficiently by automatic searching over the parameter space.
+    Some papers on this topic can be found on the <a href="http://bebop.cs.berkeley.edu/"><strong>Be</strong>rkeley <strong>B</strong>enchmarking and <strong>Op</strong>timization (BeBOP) page</a></p>
+</li>
+</ul>
+<h3 id="other-notes">Other notes</h3>
+<ul>
+<li>
+<p>You may use <a href="https://portal.xsede.org/psc-bridges#programming">any compiler available</a> on Bridges.
+    We recommend starting with the GNU C++ compiler (g++), which is what the <code>make.sh</code> script uses automatically.
+    If you use a compiler other than gcc, you will have to change <code>src/CMakeLists.txt</code>, which uses gcc-specific flags.
+    You can type “module list” to see which compiler wrapper you have loaded.
+    Note that you may have to switch compilers using the module system.</p>
+</li>
+<li>
+<p>Double-precision matrix multiplication is the <a href="http://www.netlib.org/blas/dgemm.f"><code>dgemm</code></a> (<strong>d</strong>ouble-precision <strong>ge</strong>neral <strong>m</strong>atrix-<strong>m</strong>atrix multiply) routine in the level-3 <a href="http://netlib.org/blas/index.html">BLAS</a>.
+    We will compare your implementation with the tuned <code>dgemm</code> implementation available on Bridges, where we will compare with the Intel MKL implementation of <code>dgemm</code>.
+    Note that <code>dgemm</code> has a more general interface than <code>square_dgemm::blocked</code>.
+    An <a href="#optional">optional</a> part of HW1 encourages you to explore this richer tuning space.</p>
+</li>
+<li>
+<p>Once you have finished and are happy with your <code>square_dgemm::blocked</code> implementation you should consider this and other <a href="#optional">optional</a> improvements for further coding practice but they will not be graded for HW1.</p>
+</li>
+<li>
+<p>You may make use of C++11 features, such as the STL, if you find it useful, provided they do not implement optimal BLAS routines.</p>
+</li>
+</ul>
+<h2 id="grading">Grading</h2>
+<p>Your final code grade will be determined by comparing your code’s sustained performance relative to the Intel MKL implementation (i.e. the “blas” running mode).</p>
+<p>A quicker estimate of your code grade is outputted at the conclusion of each benchmarking run.
+It is computed by comparing your code’s sustained performance on Bridges as a percentage of the theoretical peak performance.
+From that estimate, you will receive a score as follows:</p>
+<ul>
+<li>
+<p>If your sustained performance is between 0% and 25% you will receive a score between 0 and 65 proportional to your sustained performance (Ex: 20% gives a score of 52)</p>
+</li>
+<li>
+<p>If your sustained performance is between 25% and 40% you will receive a score between 65 and 80 proportional to your sustained performance (Ex: 35% gives a score of 75)</p>
+</li>
+<li>
+<p>If your sustained performance is between 40% and 70% you will receive a score between 80 and 100 proportional to your sustained performance (Ex: 60% gives a score of 93)</p>
+</li>
+<li>
+<p>If your sustained performance is above 70% you will receive 100</p>
+</li>
+</ul>
+<p><strong>VERY IMPORTANT!</strong> Your submission must pass the error bound test and cannot call BLAS for dgemm; any submissions that fail these tests this will receive a grade of 0.
+For this reason, do not change <strong>anything</strong> in the <code>benchmark.cpp</code> file, otherwise you might deactivate this check and not realize your code is not behaving properly.</p>
+<h2 id="optional">Optional</h2>
+<p>These parts are not graded.
+You should be satisfied with your <code>square_dgemm::blocked</code> results before beginning an optional part.</p>
+<ul>
+<li>
+<p>Implement Strassen matmul.
+    Consider switching over to the three-nested-loops algorithm when the recursive subproblems are small enough.</p>
+</li>
+<li>
+<p>Support the <code>dgemm</code> interface (ie, rectangular matrices, transposing, scalar multiples).</p>
+</li>
+<li>
+<p>Try <code>float</code> (single-precision).
+    This means you can use 8-way SIMD parallelism on Bridges.</p>
+</li>
+<li>
+<p>Try complex numbers (single- and double-precision).
+    <a href="http://stackoverflow.com/questions/3211346/complex-mul-and-div-using-sse-instructions">This forum thread</a> gives advice on vectorizing complex multiplication with the conventional approach, but note that there are <a href="http://en.wikipedia.org/wiki/Multiplication_algorithm#Gauss.27s_complex_multiplication_algorithm">other algorithms</a> for this operation.</p>
+</li>
+<li>
+<p>Optimize your matmul for the case when the inputs are symmetric.
+    Consider <a href="http://www.netlib.org/lapack/lug/node122.html">conventional</a> and <a href="http://www.netlib.org/lapack/lug/node123.html">packed</a> symmetric storage.</p>
+</li>
+<li>
+<p>Run the optimized code on one of the other supercomputers available and check relative performance and what optimizations need to change or become more relevant</p>
+</li>
+</ul>
+<h2 id="references">References</h2>
+<p>Here are some references that you can use to get started.
+The PDFs are included in the <code>references/</code> folder for your convenience.</p>
+<ul>
+<li>
+<p>Goto, K., and van de Geijn, R. A. 2008. <a href="/references/Goto_2008_Anatomy_of_High-performance_Matrix_Multiplication.pdf">Anatomy of High-Performance Matrix Multiplication</a>, <em>ACM Transactions on Mathematical Software 34</em>, 3, Article 12.</p>
+<p><strong>Note:</strong> explains the design decisions for the GotoBLAS <code>dgemm</code> implementation, which also apply to your code.</p>
+</li>
+<li>
+<p>Chellappa, S., Franchetti, F., and Püschel, M. 2008. <a href="/references/Chellappa_2008_How_to_Write_Fast_Numerical_Code.pdf">How To Write Fast Numerical Code: A Small Introduction</a>, <em>Lecture Notes in Computer Science 5235</em>, 196-259.</p>
+<p><strong>Note:</strong> how to write C code for modern compilers and memory hierarchies, so that it runs fast.
+Recommended reading, especially for newcomers to code optimization.</p>
+</li>
+<li>
+<p>Bilmes, <em>et. al.</em> <a href="/references/Bilmes_1998_The_PHiPAC_v1.0_Matrix-Multiply_Distribution.pdf">The PHiPAC (Portable High Performance ANSI C) Page for BLAS3 Compatible Fast Matrix Matrix Multiply</a>.</p>
+<p><strong>Note:</strong> PHiPAC is a code-generating autotuner for matmul that started as a submission for this HW in a previous semester of CS267.
+Also see <a href="http://math-atlas.sourceforge.net/">ATLAS</a>; both are good examples if you are considering code generation strategies.</p>
+</li>
+<li>
+<p>Lam, M. S., Rothberg, E. E, and Wolf, M. E. 1991. <a href="/references/Lam_1991_The_Cache_Performance_and_Optimizations_of_Blocked_Algorithms.pdf">The Cache Performance and Optimization of Blocked Algorithms</a>, <em>ASPLOS’91</em>, 63-74.</p>
+<p><strong>Note:</strong> clearly explains cache blocking, supported by with performance models.</p>
+</li>
+<li>
+<p><a href="/references/homework1notes_bvs.pdf">Notes</a> on vectorizing with SSE intrinsics and a short <a href="https://www.cac.cornell.edu/vw/apc6/NotesOnHomework1.mp4">video</a> by Brian Van Straalen.
+    <strong>Please ignore the due date on the last slide</strong></p>
+</li>
+</ul>
+<h2 id="documentation">Documentation:</h2>
+<ul>
+<li>
+<p><a href="https://portal.xsede.org/psc-bridges">Bridges computing environment</a> documentation</p>
+</li>
+<li>
+<p><a href="https://ark.intel.com/products/81057/Intel-Xeon-Processor-E5-2695-v3-35M-Cache-2_30-GHz">Intel Xeon Processor E5-2695 v3, 2.3GHz, 35M Cache</a> documentation.</p>
+</li>
+</ul>
+<p>You are also welcome to learn from the source code of state-of-art BLAS implementations such as <a href="http://www.tacc.utexas.edu/tacc-projects/gotoblas2">GotoBLAS</a>.
+However, you should not reuse those codes in your submission.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

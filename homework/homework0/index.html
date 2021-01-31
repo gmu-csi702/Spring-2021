@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Homework0 - CSI 702 Sp'21</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">CSI 702 Sp'21</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../schedule/" class="nav-link">Course Schedule</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../assignments/" class="nav-link">Assignments</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#homework-0-describe-a-parallel-application" class="nav-link">Homework 0 — Describe a Parallel Application</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#instructions" class="nav-link">Instructions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#resources" class="nav-link">Resources</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#how-to-submit" class="nav-link">How to submit</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="homework-0-describe-a-parallel-application">Homework 0 — Describe a Parallel Application</h1>
+<p>Due: February 1, 2019 @ 11:59pm</p>
+<h2 id="instructions">Instructions</h2>
+<p>First, include a brief bio of you, your research interests, and what you’d like to get out of the class.
+This will help us form initial assignment groups, and later this will help you find project partners.</p>
+<p>Examine an application problem for which parallel computing has been used.
+You may pick a problem from your own research area, somewhere on the web, or elsewhere (so long as it is verifiable).
+Build a web page briefly describing the application, the use of parallelism, and a frank assessment of its success, weaknesses, and challenges.</p>
+<p>Some specific details to consider include the following:</p>
+<ul>
+<li>
+<p>What is the scientific or engineering problem being solved?</p>
+</li>
+<li>
+<p>How well did the application achieve its scientific / engineering objective? Are simulation results compared to physical results?</p>
+</li>
+<li>
+<p>What parallel platform has the application targeted? (distributed vs. shared memory, vector, etc.) What tools were used to build the application? (languages, libraries, etc.)</p>
+</li>
+<li>
+<p>If the application is run on a major supercomputer, where does that computer rank on the <a href="https://www.top500.org/">Top 500</a> list?</p>
+</li>
+<li>
+<p>How well did the application perform? How does this compare to the platform’s best possible performance?</p>
+</li>
+<li>
+<p>Does the application “scale” to large problems on many processors? If you believe it has not, what bottlenecks may have limited its performance?</p>
+</li>
+</ul>
+<p>Not all of these details will be available for all applications.
+You ought to explain what you find noteworthy about the application or its implementation.</p>
+<p>The write-up should be 1 – 2 pages in length, single-spaced (if you include a figure, then a third is okay).
+The document’s structure and formatting should be formal and any references you use should be cited and listed in a <em>References</em> section at the bottom of the document.
+Pick a scientific citation style (I don’t care which one, but pick one) and be consistent with it.</p>
+<h2 id="resources">Resources</h2>
+<p>Besides <a href="https://www.google.com">Google</a>, you can look at the results from previous classes (at UC Berkeley) for inspiration:</p>
+<ul>
+<li><a href="https://people.eecs.berkeley.edu/~aditya/local_hw0/results.html">Spring 2018</a></li>
+<li><a href="https://sites.google.com/a/lbl.gov/cs267-spring-2017/home/hw0-results">Spring 2017</a></li>
+<li><a href="https://people.eecs.berkeley.edu/~mme/cs267-2016/hw0/results.html">Spring 2016</a></li>
+<li><a href="https://people.eecs.berkeley.edu/~penpornk/cs267.spr15/hw0/results.html">Spring 2015</a></li>
+<li><a href="https://people.eecs.berkeley.edu/~driscoll/cs267/hw0/">Spring 2013</a></li>
+</ul>
+<h2 id="how-to-submit">How to submit</h2>
+<p>Export your write-up to PDF format and upload it to the following two locations:</p>
+<ol>
+<li>
+<p>Homework 0 assignment listing on Blackboard</p>
+</li>
+<li>
+<p>Homework 0 assignment listing on Moodle: <a href="https://moodle.xsede.org/mod/page/view.php?id=40">https://moodle.xsede.org/mod/page/view.php?id=40</a></p>
+</li>
+</ol></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
